@@ -1,3 +1,4 @@
+#ignore name, getting first "X" players
 import pandas as pd
 
 # Define the Sleeper API endpoint for all player data
@@ -6,8 +7,11 @@ SLEEPER_API_URL = "https://api.sleeper.app/v1/players/nfl"
 # Read the JSON data directly into a pandas DataFrame
 player_data = pd.read_json(SLEEPER_API_URL)
 
+# Transpose the DataFrame to have players as rows
+player_data_transposed = player_data.T
+
 # Select the first 10 players
-first_10_players = player_data.head(10)
+first_10_players = player_data_transposed.head(10)
 
 # Display the first 10 rows of the DataFrame
 print(first_10_players)
